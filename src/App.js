@@ -19,6 +19,9 @@ function App() {
 
 
       {isLogged ? <h3>valuable info i shouldnt see if i m not logged in bakemono</h3> : ''}
+      <form action="../../post" method="post">
+        <button type="submit">Connected?</button>
+      </form>
       
     </div>
   );
