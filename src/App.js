@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Signup from './Components/Signup';
+import Signup from './Containers/Signup';
 
 
 function App() {
