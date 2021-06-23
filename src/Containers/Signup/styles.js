@@ -2,6 +2,12 @@ import { makeStyles } from '@material-ui/core/styles';
 
 
 const styles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    '& > * + *': {
+      marginTop: theme.spacing(5),
+    },
+  },
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
