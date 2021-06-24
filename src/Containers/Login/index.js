@@ -5,7 +5,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
+import { Link } from 'react-router-dom';
 import axios from "axios";
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -14,6 +14,9 @@ import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
 import Copyright from './copyright';
 import useStyles from './styles';
+import { useDispatch } from 'react-redux';
+import { userLoggedIn } from '../../actions';
+
 
 
 
@@ -21,6 +24,7 @@ import useStyles from './styles';
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
   const classes = useStyles();
 
   const handleClick = async() => {
@@ -35,7 +39,10 @@ export default function Login() {
       password
     }).catch((err) => console.log('login error', err))
     console.log(response);
-
+    const user = response.data;
+    if(user){
+      dispatch(userLoggedIn(user));
+    }
   }
 
   return (
@@ -76,16 +83,18 @@ export default function Login() {
           control={<Checkbox value="remember" color="primary" />}
           label="Remember me"
         />
-        <Button
-          type="submit"
-          fullWidth
-          variant="contained"
-          color="primary"
-          className={classes.submit}
-          onClick={handleClick}
-        >
-          Sign In
-        </Button>
+        <Link to="/dashboard">
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={handleClick}
+          >
+            Sign In
+          </Button>
+        </Link>
         <Grid container>
           <Grid item xs>
             <Link href="#" variant="body2">
@@ -93,7 +102,7 @@ export default function Login() {
             </Link>
           </Grid>
           <Grid item>
-            <Link href="#" variant="body2">
+            <Link to="/signup" variant="body2">
               {"Don't have an account? Sign Up"}
             </Link>
           </Grid>

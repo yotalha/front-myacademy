@@ -23,3 +23,17 @@ export const decrementByAmount = (amount) => {
     payload: amount
   }
 }
+
+export const userLoggedIn = (user) => {
+  return{
+    type: 'SIGNED_IN',
+    payload: user
+  }
+}
+
+export const userLoggedOut = () => {
+  return{
+    type: 'SINGED_OUT'
+  }
+}
+
