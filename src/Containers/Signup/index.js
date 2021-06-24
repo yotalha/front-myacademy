@@ -59,6 +59,7 @@ export default function SignUp() {
       }).catch(err => {console.log(err, setShowError(true))})
       setShowError(false)
       setShowSuccess(true)
+      console.log(user)
     }
   }
 
